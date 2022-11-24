@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 
 @RestController
@@ -27,8 +28,8 @@ class InvoiceController {
     }
 
     @PostMapping
-    fun save(@RequestBody invoice:Invoice):Invoice{
-        return invoiceService.save(invoice)
+    fun save (@RequestBody @Valid invoice:Invoice):ResponseEntity<Invoice>{
+        return ResponseEntity(invoiceService.save(invoice), HttpStatus.OK)
     }
 
     @PutMapping

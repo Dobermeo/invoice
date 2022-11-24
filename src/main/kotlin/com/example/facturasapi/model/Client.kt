@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.validation.constraints.NotBlank
 
 
 @Entity
@@ -15,7 +16,9 @@ class Client {
     @Id
     @Column(updatable = false)
     var id: Long? = null
+    @NotBlank(message="Campo obligatorio") //validate
     var nui: String? = null
+    @NotBlank(message="Campo obligatorio")  //validate
     var fullname: String? = null
-    var addrees: String? = null
+    var address: String? = null
 }
