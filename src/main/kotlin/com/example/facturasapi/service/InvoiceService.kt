@@ -59,4 +59,8 @@ class InvoiceService {
             throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
+
+  fun listTotalMoreThan(total:Double?): List<Invoice>? {
+    return invoiceRepository.findTotalMoreThan(total)
+  }
 }
