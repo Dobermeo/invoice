@@ -20,8 +20,20 @@ class ClientService {
     }
 
 
-    fun save(client:Client):Client{
+    fun save(client:Client):Client {
+      try {
+        client.fullname?.takeIf { it.trim().isNotEmpty() }
+          ?: throw Exception("fullname no debe ser vacio")
+
+
+//client.fullname?.takeIf { it.stock > 0 }
+        //              ?: throw Exception("fullname no debe ser vacio")
+
         return clientRepository.save(client)
+      }
+      catch(ex:Exception){
+        throw ResponseStatusException(HttpStatus.NOT_FOUND, ex.message)
+      }
     }
 
     fun update(client:Client):Client {

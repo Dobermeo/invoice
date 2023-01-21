@@ -10,4 +10,3 @@ interface InvoiceRepository: JpaRepository <Invoice, Long> {
 
     fun findById(id: Long?):Invoice?
 }
- add
